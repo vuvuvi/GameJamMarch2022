@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Dude : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private WanderAI wanderAI;
+    private StatsManager statsManager;
+    private CulturesManager culturesManager;
+
+
+
+    private void Awake()
     {
-        
+        wanderAI = GetComponent<WanderAI>();
+        statsManager = GetComponent<StatsManager>();
+        culturesManager = GetComponent<CulturesManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    public void Init(Culture baseCulture)
     {
-        
+        culturesManager.Init(baseCulture);
     }
 }

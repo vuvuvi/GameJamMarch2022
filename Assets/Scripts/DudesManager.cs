@@ -35,6 +35,7 @@ public class DudesManager : MonoBehaviour
             {
                 Vector3 position = new Vector3(regionPosition.position.x + Random.Range(-initialSpreadRadius,initialSpreadRadius), regionPosition.position.y + Random.Range(-initialSpreadRadius,initialSpreadRadius), 0);
                 Dude dude = Instantiate(dudePrefab, position, Quaternion.identity);
+                dude.Init((Culture) i);
             }
         }
     }
