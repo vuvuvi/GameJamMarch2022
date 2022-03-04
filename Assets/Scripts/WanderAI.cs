@@ -12,19 +12,44 @@ public class WanderAI : MonoBehaviour
     [SerializeField]
     float maxDistance;
 
+    float waitTime;
+
     Vector2 wayPoint;
 
     private void Start()
     {
-        StartCoroutine(Walking());
+        //StartCoroutine(Wandering());
+        SetNewDestination();
+        waitTime = 1f;
     }
 
     private void Update()
     {
-       transform.position = Vector2.MoveTowards(transform.position, wayPoint, speed * Time.deltaTime);
+        waitTime += Time.deltaTime;
+        Debug.Log("Wait Time = " + waitTime);
+
+        if (waitTime > 8)
+        {
+            
+            waitTime = 0f;
+        }
+
+        else if (waitTime == 0)
+        {
+
+        }
+        else
+        {
+            Move();
+
+        }
+
         if (Vector2.Distance(transform.position, wayPoint) <range)
         {
-            StartCoroutine(Walking()) ;
+
+            SetNewDestination();
+            //StartCoroutine(Wandering()) ;
+            
         }
     }
 
@@ -32,18 +57,17 @@ public class WanderAI : MonoBehaviour
     {
         
         wayPoint = new Vector2(Random.Range(-maxDistance, maxDistance),Random.Range(-maxDistance, maxDistance));
-
         
     }
 
-    IEnumerator Walking()
-
+    private void Move()
     {
-
-        int waitTime = Random.Range(0, 15);
-        SetNewDestination();
-        yield return new WaitForSeconds(waitTime);
-
+        transform.position = Vector2.MoveTowards(transform.position, wayPoint, speed * Time.deltaTime);
     }
 
+
 }
+
+
+
+

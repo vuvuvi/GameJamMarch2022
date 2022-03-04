@@ -511,7 +511,7 @@ MonoBehaviour:
   - {fileID: 1455951548}
   - {fileID: 181987626}
   - {fileID: 1274903870}
-  initialSpreadRadius: 0.3
+  initialSpreadRadius: 1
   dudePrefab: {fileID: 1185024169570123883, guid: 36674e9c2b4a77f4e8007cb33b582a7e, type: 3}
 --- !u!4 &1687265953
 Transform:
