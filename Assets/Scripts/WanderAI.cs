@@ -1,48 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WanderAI : MonoBehaviour
 {
-    public bool isWandering = false;
-    public float moveSpeed = 1f;
-    void FixedUpdate()
+    [SerializeField]
+    float speed;
+    [SerializeField]
+    float range;
+    [SerializeField]
+    float maxDistance;
+
+    Vector2 wayPoint;
+
+    private void Start()
     {
-        if (!isWandering)
-        {
-            StartCoroutine(Wander());
-        }
-
-
+        StartCoroutine(Walking());
     }
 
-    IEnumerator Wander()
+    private void Update()
     {
-        int movement = Random.Range(0, 5);
-
-        int waitTime = Random.Range(1, 5);
-
-        int movingDirection = Random.Range(1, 3);
-
-        isWandering = true;
-
-        if (movingDirection == 1)
+       transform.position = Vector2.MoveTowards(transform.position, wayPoint, speed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, wayPoint) <range)
         {
-            transform.Translate(0, movement * moveSpeed * Time.deltaTime, 0);
+            StartCoroutine(Walking()) ;
         }
+    }
 
-        if (movingDirection == 2)
-        {
-            transform.Translate(0, -movement * moveSpeed * Time.deltaTime, 0);
-        }
+    void SetNewDestination ()
+    {
+        
+        wayPoint = new Vector2(Random.Range(-maxDistance, maxDistance),Random.Range(-maxDistance, maxDistance));
 
-        if (movingDirection == 3)
-        {
-            transform.Translate(movement * Time.deltaTime, 0, 0);
-        }
+        
+    }
 
+    IEnumerator Walking()
+
+    {
+
+        int waitTime = Random.Range(0, 15);
+        SetNewDestination();
         yield return new WaitForSeconds(waitTime);
 
-        isWandering = false;
     }
+
 }
