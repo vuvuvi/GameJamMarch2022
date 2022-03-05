@@ -46,28 +46,32 @@ public class CulturesManager : MonoBehaviour
         switch (culture)
         {
             case Culture.CULTURE1:
-                float factor = (1 - (culturesPresence1 + amount)) / (1 - culturesPresence1);
+                if (culturesPresence1 == 1) break;
+                float factor = (1 - (Mathf.Clamp01(culturesPresence1 + amount))) / (1 - culturesPresence1);
                 culturesPresence1 += amount;
                 culturesPresence2 *= factor;
                 culturesPresence3 *= factor;
                 culturesPresence4 *= factor;
                 break;
             case Culture.CULTURE2:
-                factor = (1 - (culturesPresence2 + amount)) / (1 - culturesPresence2);
+                if (culturesPresence2 == 1) break;
+                factor = (1 - (Mathf.Clamp01(culturesPresence2 + amount))) / (1 - culturesPresence2);
                 culturesPresence1 *= factor;
                 culturesPresence2 += amount;
                 culturesPresence3 *= factor;
                 culturesPresence4 *= factor;
                 break;
             case Culture.CULTURE3:
-                factor = (1 - (culturesPresence3 + amount)) / (1 - culturesPresence3);
+                if (culturesPresence3 == 1) break;
+                factor = (1 - (Mathf.Clamp01(culturesPresence3 + amount))) / (1 - culturesPresence3);
                 culturesPresence1 *= factor;
                 culturesPresence2 *= factor;
                 culturesPresence3 += amount;
                 culturesPresence4 *= factor;
                 break;
             case Culture.CULTURE4:
-                factor = (1 - (culturesPresence4 + amount)) / (1 - culturesPresence4);
+                if (culturesPresence4 == 1) break;
+                factor = (1 - (Mathf.Clamp01(culturesPresence4 + amount))) / (1 - culturesPresence4);
                 culturesPresence1 *= factor;
                 culturesPresence2 *= factor;
                 culturesPresence3 *= factor;
