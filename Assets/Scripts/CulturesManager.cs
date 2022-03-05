@@ -5,8 +5,73 @@ using UnityEngine;
 public class CulturesManager : MonoBehaviour
 {
     private Culture baseCulture;
+    private float culturesPresence1;
+    private float culturesPresence2;
+    private float culturesPresence3;
+    private float culturesPresence4;
     private SpriteRenderer spriteRenderer;
     private Dude dude;
+
+
+
+    public void Init(Culture baseCulture, Dude dude)
+    {
+        this.baseCulture = baseCulture;
+        this.dude = dude;
+        switch (baseCulture)
+        {
+            case Culture.CULTURE1:
+                culturesPresence1 = 1f;
+                break;
+            case Culture.CULTURE2:
+                culturesPresence2 = 1f;
+                break;
+            case Culture.CULTURE3:
+                culturesPresence3 = 1f;
+                break;
+            case Culture.CULTURE4:
+                culturesPresence4 = 1f;
+                break;
+
+        }
+        float[] colorsRatios = ComputeColorsRatios();
+        MaterialPropertyBlock block = new MaterialPropertyBlock();
+        block.SetFloat("Color2Ratio", colorsRatios[0]);
+        block.SetFloat("Color3Ratio", colorsRatios[1]);
+        block.SetFloat("Color4Ratio", colorsRatios[2]);
+        spriteRenderer.SetPropertyBlock(block);
+    }
+
+    public void IncreaseCulture(Culture culture, float amount)
+    {
+        switch (culture)
+        {
+            case Culture.CULTURE1:
+                float factor = (1 - culturesPresence1 + amount) / (1 - culturesPresence1);
+                culturesPresence2 *= factor;
+                culturesPresence3 *= factor;
+                culturesPresence4 *= factor;
+                break;
+            case Culture.CULTURE2:
+                factor = (1 - culturesPresence2 + amount) / (1 - culturesPresence2);
+                culturesPresence1 *= factor;
+                culturesPresence3 *= factor;
+                culturesPresence4 *= factor;
+                break;
+            case Culture.CULTURE3:
+                factor = (1 - culturesPresence3 + amount) / (1 - culturesPresence3);
+                culturesPresence1 *= factor;
+                culturesPresence2 *= factor;
+                culturesPresence4 *= factor;
+                break;
+            case Culture.CULTURE4:
+                factor = (1 - culturesPresence4 + amount) / (1 - culturesPresence4);
+                culturesPresence1 *= factor;
+                culturesPresence2 *= factor;
+                culturesPresence3 *= factor;
+                break;
+        }
+    }
 
 
 
@@ -15,31 +80,13 @@ public class CulturesManager : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Init(Culture baseCulture)
+    private float[] ComputeColorsRatios()
     {
-        this.baseCulture = baseCulture;
-        this.dude = dude;
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        switch (baseCulture)
-        {
-            case Culture.CULTURE2:
-                color2Ratio = 1f;
-                break;
-            case Culture.CULTURE3:
-                color2Ratio = 1f;
-                color3Ratio = 1f;
-                break;
-            case Culture.CULTURE4:
-                color2Ratio = 1f;
-                color3Ratio = 1f;
-                color4Ratio = 1f;
-                break;
-
-        }
-        block.SetFloat("Color2Ratio", color2Ratio);
-        block.SetFloat("Color3Ratio", color3Ratio);
-        block.SetFloat("Color4Ratio", color4Ratio);
-        spriteRenderer.SetPropertyBlock(block);
+        float[] ratios = new float[3];
+        ratios[0] = 1 - culturesPresence1;
+        ratios[1] = ratios[0] - culturesPresence1;
+        ratios[2] = ratios[1] - culturesPresence2;
+        return ratios;
     }
 }
 
