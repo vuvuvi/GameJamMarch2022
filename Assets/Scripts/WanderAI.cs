@@ -1,24 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class WanderAI : MonoBehaviour
 {
     [SerializeField]
-    float minSpeed;
+    AnimationCurve speedDistribution;
     [SerializeField]
-    float maxSpeed;
+    AnimationCurve distanceDistribution;
     [SerializeField]
-    float minDistance;
+    AnimationCurve waitingTimeDistribution;
     [SerializeField]
-    float maxDistance;
-    [SerializeField]
-    float minWaitingTime;
-    [SerializeField]
-    float maxWaitingTime;
+    float movingProbability;
 
-    float minDelta;
+    float minDelta = 0.1f;
     Vector4 boardBounds;
 
     float currentSpeed;
@@ -31,14 +26,14 @@ public class WanderAI : MonoBehaviour
 
 
 
-    public void Init(Vector3 boardBounds)
+    public void Init(Vector4 boardBounds)
     {
         this.boardBounds = boardBounds;
     }
 
 
 
-    private void Awake()
+    private void Start()
     {
         AssignAction();
     }
@@ -58,7 +53,7 @@ public class WanderAI : MonoBehaviour
 
     private void AssignAction()
     {
-        currentState = (State) Random.Range(0, 2);
+        currentState = (State) (Random.value < movingProbability ? State.MOVING : State.WAITING);
         switch (currentState)
         {
             case State.MOVING:
@@ -72,16 +67,19 @@ public class WanderAI : MonoBehaviour
 
     private void SetNewDestination()
     {
-        float distance = Random.Range(minDistance, maxDistance);
-        float directionRadAngle = Mathf.Deg2Rad * Random.Range(0f, 360f);
-        wayPoint = transform.position + new Vector3(Mathf.Cos(directionRadAngle), Mathf.Sin(directionRadAngle)) * distance;
-        currentSpeed = Random.Range(minSpeed, maxSpeed);
+        float distance = distanceDistribution.Evaluate(Random.value);
+        do
+        {
+            float directionRadAngle = Mathf.Deg2Rad * Random.Range(0f, 360f);
+            wayPoint = transform.position + new Vector3(Mathf.Cos(directionRadAngle), Mathf.Sin(directionRadAngle)) * distance;
+        } while (wayPoint.x < boardBounds.w || wayPoint.x > boardBounds.y || wayPoint.y < boardBounds.z || wayPoint.y > boardBounds.x);
+        currentSpeed = speedDistribution.Evaluate(Random.value);
         Debug.DrawLine(transform.position, new Vector3(wayPoint.x, wayPoint.y, transform.position.z), Color.red, 5f);
     }
 
     private void StartWaiting()
     {
-        nextActionTime = Random.Range(minWaitingTime, maxWaitingTime);
+        nextActionTime = Time.time + waitingTimeDistribution.Evaluate(Random.value);
         // change anim
         // sit if long time
     }
@@ -91,7 +89,7 @@ public class WanderAI : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, wayPoint, currentSpeed * Time.deltaTime);
         if (Vector2.Distance(transform.position, wayPoint) < minDelta)
         {
-            SetNewDestination();
+            AssignAction();
         }
     }
 

@@ -40,7 +40,7 @@ public class DudesManager : MonoBehaviour
                 board.bounds.max.y,
                 board.bounds.max.x,
                 board.bounds.min.y,
-                board.bounds.min.y
+                board.bounds.min.x
                 );
                 dude.Init((Culture) i, boardBounds);
             }

@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 5487880956426731551}
   - component: {fileID: 2355225213597162707}
   - component: {fileID: 5973034082152304233}
-  - component: {fileID: 1199527507588731568}
   m_Layer: 0
   m_Name: Dude
-  m_TagString: Bonome
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,12 +110,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf0f88c670b22d4b95aee01b48109eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 0
-  maxSpeed: 2
-  minDistance: 1
-  maxDistance: 10
-  minWaitingTime: 0
-  maxWaitingTime: 30
+  speedDistribution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3
+      outSlope: 3
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 3
+      inSlope: 3
+      outSlope: 3
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  distanceDistribution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 10
+      inSlope: 20.977043
+      outSlope: 20.977043
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.060294807
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  waitingTimeDistribution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.68884987
+      value: 6.9406667
+      inSlope: 19.792011
+      outSlope: 19.792011
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.22577173
+    - serializedVersion: 3
+      time: 1
+      value: 20
+      inSlope: 75.038414
+      outSlope: 75.038414
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.077979855
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  movingProbability: 0.7
 --- !u!114 &2355225213597162707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,33 +216,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3136058dc80b8c45bd3311d71410847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sword: {fileID: 0}
-  backpack: {fileID: 0}
-  papyrus: {fileID: 0}
-  fourche: {fileID: 0}
---- !u!61 &1199527507588731568
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3056145264010714642}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.7}
-    newSize: {x: 0.48, y: 0.7}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.48, y: 0.7}
-  m_EdgeRadius: 0
