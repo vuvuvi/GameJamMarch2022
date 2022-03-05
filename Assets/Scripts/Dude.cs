@@ -19,6 +19,7 @@ public class Dude : MonoBehaviour
         statsManager = GetComponent<StatsManager>();
         culturesManager = GetComponent<CulturesManager>();
         wanderAI = GetComponent<WanderAI>();
+
     }
 
 
@@ -29,4 +30,6 @@ public class Dude : MonoBehaviour
         culturesManager.Init(baseCulture, this);
         wanderAI.Init(boardBounds, this);
     }
+
+
 }

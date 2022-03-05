@@ -15,7 +15,7 @@ public class CulturesManager : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Init(Culture baseCulture)
+    public void Init(Culture baseCulture, Dude dude)
     {
         this.baseCulture = baseCulture;
         this.dude = dude;
