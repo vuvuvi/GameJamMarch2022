@@ -20,6 +20,8 @@ public class WanderAI : MonoBehaviour
     State currentState;
     Dude dude;
     float distance;
+    bool isMoving;
+    public Animator animator;
 
 
 
@@ -85,6 +87,7 @@ public class WanderAI : MonoBehaviour
 
     private void Move()
     {
+        isMoving = true;    
         transform.position = Vector2.MoveTowards(transform.position, wayPoint, currentSpeed * Time.deltaTime);
         if (Vector2.Distance(transform.position, wayPoint) < minDelta)
         {
@@ -94,9 +97,23 @@ public class WanderAI : MonoBehaviour
 
     private void Wait()
     {
+        isMoving = false;
         if (Time.time >= nextActionTime)
         {
             AssignAction();
+        }
+    }
+
+    void Animation()
+    {
+        if (isMoving)
+        {
+            animator.SetBool("isWalking", true);
+        }
+
+        else if (!isMoving)
+        {
+            animator.SetBool("isWalking", false);
         }
     }
 }

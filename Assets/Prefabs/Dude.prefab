@@ -263,6 +263,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   movingProbability: 1
+  animator: {fileID: 585491891819277594}
 --- !u!114 &2355225213597162707
 MonoBehaviour:
   m_ObjectHideFlags: 0
