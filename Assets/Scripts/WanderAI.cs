@@ -12,23 +12,20 @@ public class WanderAI : MonoBehaviour
     AnimationCurve waitingTimeDistribution;
     [SerializeField]
     float movingProbability;
-
     float minDelta = 0.1f;
     Vector4 boardBounds;
-
     float currentSpeed;
-
     float nextActionTime;
-
     Vector2 wayPoint;
-
     State currentState;
+    Dude dude;
 
 
 
-    public void Init(Vector4 boardBounds)
+    public void Init(Vector4 boardBounds, Dude dude)
     {
         this.boardBounds = boardBounds;
+        this.dude = dude;
     }
 
 
@@ -100,16 +97,10 @@ public class WanderAI : MonoBehaviour
             AssignAction();
         }
     }
-
-
-
-    public enum State
-    {
-        MOVING,
-        WAITING
-    }
 }
 
-
-
-
+public enum State
+{
+    MOVING,
+    WAITING
+}

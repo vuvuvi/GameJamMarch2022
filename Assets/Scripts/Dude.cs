@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class Dude : MonoBehaviour
 {
-    private WanderAI wanderAI;
+    public StatsManager StatsManager => statsManager;
+    public CulturesManager CulturesManager => culturesManager;
+    public WanderAI WanderAI => wanderAI;
+
     private StatsManager statsManager;
     private CulturesManager culturesManager;
+    private WanderAI wanderAI;
 
 
 
     private void Awake()
     {
-        wanderAI = GetComponent<WanderAI>();
         statsManager = GetComponent<StatsManager>();
         culturesManager = GetComponent<CulturesManager>();
+        wanderAI = GetComponent<WanderAI>();
     }
 
 
 
     public void Init(Culture baseCulture, Vector4 boardBounds)
     {
-        culturesManager.Init(baseCulture);
-        wanderAI.Init(boardBounds);
+        statsManager.Init(this);
+        culturesManager.Init(baseCulture, this);
+        wanderAI.Init(boardBounds, this);
     }
 }

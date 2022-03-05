@@ -6,6 +6,7 @@ public class CulturesManager : MonoBehaviour
 {
     private Culture baseCulture;
     private SpriteRenderer spriteRenderer;
+    private Dude dude;
 
 
 
@@ -17,9 +18,7 @@ public class CulturesManager : MonoBehaviour
     public void Init(Culture baseCulture)
     {
         this.baseCulture = baseCulture;
-        float color2Ratio = 0;
-        float color3Ratio = 0;
-        float color4Ratio = 0;
+        this.dude = dude;
         MaterialPropertyBlock block = new MaterialPropertyBlock();
         switch (baseCulture)
         {
