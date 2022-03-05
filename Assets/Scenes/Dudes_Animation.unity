@@ -217,6 +217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUp_Hat
       objectReference: {fileID: 0}
+    - target: {fileID: 4774355940596231954, guid: a3099f42abbb15946a19c316a1112ed8, type: 3}
+      propertyPath: m_Name
+      value: Eye
+      objectReference: {fileID: 0}
     - target: {fileID: 7342337665584192063, guid: a3099f42abbb15946a19c316a1112ed8, type: 3}
       propertyPath: m_RootOrder
       value: 2
