@@ -21,6 +21,7 @@ public class WanderAI : MonoBehaviour
     Dude dude;
     private float openness, mobility;
     private bool explorator, protector;
+    float distance;
 
 
     public void Init(Vector4 boardBounds, Dude dude)
@@ -37,21 +38,16 @@ public class WanderAI : MonoBehaviour
         mobility = Random.Range(0f, 1f);
         SetMobility();
         SetOpenness();
+        SetNewDestination();
         AssignAction();
 
     }
 
     private void Update()
     {
-        if (protector)
-        {
-            Wait();
+     
 
-        }
-
-        else
-        {
-
+        
         switch (currentState)
         {
             case State.MOVING:
@@ -61,7 +57,7 @@ public class WanderAI : MonoBehaviour
                 Wait();
                 break;
         }
-        }
+        
 
 
     }
@@ -82,7 +78,7 @@ public class WanderAI : MonoBehaviour
 
     private void SetNewDestination()
     {
-        float distance = distanceDistribution.Evaluate(Random.value);
+       //distance = distanceDistribution.Evaluate(Random.value);
         do
         {
             float directionRadAngle = Mathf.Deg2Rad * Random.Range(0f, 360f);
@@ -120,11 +116,13 @@ public class WanderAI : MonoBehaviour
     {
         if (mobility <= 0.5f)
         {
-            movingProbability = mobility;
+            distance = Random.Range(0f,0.5f);
             explorator = false; 
         }
 
-        else { explorator = true; }
+        else { explorator = true;
+            distance = 1f;
+        }
 
         
     }
@@ -132,7 +130,7 @@ public class WanderAI : MonoBehaviour
     public void SetOpenness()
     {
         if (openness <= 0.5f) {
-            movingProbability = openness;
+            distance = 0.2f;
             protector = true; 
         }
 
