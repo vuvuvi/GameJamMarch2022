@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CulturesManager : MonoBehaviour
 {
+    public Culture BaseCulture => baseCulture;
+
     private Culture baseCulture;
     private float culturesPresence1;
     private float culturesPresence2;
@@ -34,12 +36,7 @@ public class CulturesManager : MonoBehaviour
                 break;
 
         }
-        float[] colorsRatios = ComputeColorsRatios();
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        block.SetFloat("Color2Ratio", colorsRatios[0]);
-        block.SetFloat("Color3Ratio", colorsRatios[1]);
-        block.SetFloat("Color4Ratio", colorsRatios[2]);
-        spriteRenderer.SetPropertyBlock(block);
+        ModifyColors();
     }
 
     public void IncreaseCulture(Culture culture, float amount)
@@ -71,6 +68,7 @@ public class CulturesManager : MonoBehaviour
                 culturesPresence3 *= factor;
                 break;
         }
+        ModifyColors();
     }
 
 
@@ -80,13 +78,18 @@ public class CulturesManager : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private float[] ComputeColorsRatios()
+    private void ModifyColors()
     {
-        float[] ratios = new float[3];
-        ratios[0] = 1 - culturesPresence1;
-        ratios[1] = ratios[0] - culturesPresence1;
-        ratios[2] = ratios[1] - culturesPresence2;
-        return ratios;
+        float[] colorsRatios = new float[3];
+        colorsRatios[0] = 1 - culturesPresence1;
+        colorsRatios[1] = colorsRatios[0] - culturesPresence2;
+        colorsRatios[2] = colorsRatios[1] - culturesPresence3;
+        MaterialPropertyBlock block = new MaterialPropertyBlock();
+        block.SetTexture("_MainTex", spriteRenderer.sprite.texture);
+        block.SetFloat("_Color2Ratio", colorsRatios[0]);
+        block.SetFloat("_Color3Ratio", colorsRatios[1]);
+        block.SetFloat("_Color4Ratio", colorsRatios[2]);
+        spriteRenderer.SetPropertyBlock(block);
     }
 }
 

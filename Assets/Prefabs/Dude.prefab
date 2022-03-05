@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9031884434457789160}
   - component: {fileID: 2387826695766911520}
-  - component: {fileID: 6405588023673443942}
+  - component: {fileID: 3860302121152166614}
+  - component: {fileID: 965267750561672638}
   - component: {fileID: 585491891819277594}
   - component: {fileID: 1185024169570123883}
   - component: {fileID: 5487880956426731551}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: -1260376615
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc6141c338bb0f24a9a417ec6aa4c581, type: 3}
+  m_Sprite: {fileID: 2644543578365209562, guid: 07ef7252023dfa24398f5d814429a65e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,7 +91,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6405588023673443942
+--- !u!50 &3860302121152166614
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056145264010714642}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &965267750561672638
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,14 +129,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.7}
+    oldSize: {x: 1.43, y: 1.71}
     newSize: {x: 0.48, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.48, y: 0.7}
+  m_Size: {x: 1.43, y: 1.71}
   m_EdgeRadius: 0
 --- !u!95 &585491891819277594
 Animator:
@@ -164,9 +186,9 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 3
-      outSlope: 3
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -174,8 +196,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 3
-      inSlope: 3
-      outSlope: 3
+      inSlope: 2
+      outSlope: 2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -188,7 +210,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -240,7 +262,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  movingProbability: 0.7
+  movingProbability: 1
 --- !u!114 &2355225213597162707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7487815691048711113}
   - component: {fileID: 923846600473386715}
-  - component: {fileID: 824856800506296264}
+  - component: {fileID: 767865942823158412}
   m_Layer: 6
   m_Name: InfluenceZone
   m_TagString: Untagged
@@ -307,13 +329,13 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &824856800506296264
+  m_Radius: 1.5
+--- !u!114 &767865942823158412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -326,9 +348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dude: {fileID: 1185024169570123883}
-  layer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &6487848120432879641
 GameObject:
   m_ObjectHideFlags: 0

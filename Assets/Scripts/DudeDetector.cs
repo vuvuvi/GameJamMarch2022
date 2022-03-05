@@ -5,15 +5,18 @@ using UnityEngine;
 public class DudeDetector : MonoBehaviour
 {
     [SerializeField] private Dude dude;
-    [SerializeField] private LayerMask layer;
+    // [SerializeField] private LayerMask layer;
 
 
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.layer != layer) return;
+        if (collider.gameObject.layer != LayerMask.NameToLayer("Dude")) return;
 
         Dude otherDude = collider.GetComponent<Dude>();
-        // otherDude.CulturesManager.StatsManager.Openness
+        if (otherDude == null) return;
+        if (otherDude.CulturesManager.BaseCulture == dude.CulturesManager.BaseCulture) return;
+
+        otherDude.CulturesManager.IncreaseCulture(dude.CulturesManager.BaseCulture, dude.StatsManager.Openness);
     }
 }
