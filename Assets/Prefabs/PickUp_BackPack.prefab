@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7703801721165479885}
   - component: {fileID: 532440629749265552}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6573115639061473292}
   - component: {fileID: 4471096995045530000}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 581318352016042616}
   - component: {fileID: 4977574908187666968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PickUp_BackPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
