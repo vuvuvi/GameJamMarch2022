@@ -7,12 +7,17 @@ public class CulturesManager : MonoBehaviour
     public Culture BaseCulture => baseCulture;
 
     [SerializeField] private float influenceSpeed;
+    [SerializeField] private Color outlineColor1;
+    [SerializeField] private Color outlineColor2;
+    [SerializeField] private Color outlineColor3;
+    [SerializeField] private Color outlineColor4;
     private Culture baseCulture;
     private float culturesPresence1;
     private float culturesPresence2;
     private float culturesPresence3;
     private float culturesPresence4;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer outline;
     private Dude dude;
 
 
@@ -25,15 +30,19 @@ public class CulturesManager : MonoBehaviour
         {
             case Culture.CULTURE1:
                 culturesPresence1 = 1f;
+                outline.color = outlineColor1;
                 break;
             case Culture.CULTURE2:
                 culturesPresence2 = 1f;
+                outline.color = outlineColor2;
                 break;
             case Culture.CULTURE3:
                 culturesPresence3 = 1f;
+                outline.color = outlineColor3;
                 break;
             case Culture.CULTURE4:
                 culturesPresence4 = 1f;
+                outline.color = outlineColor4;
                 break;
 
         }

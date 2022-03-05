@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6266295725277252417}
   - component: {fileID: 6054430136305311078}
   m_Layer: 0
-  m_Name: pupil
+  m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ Animation:
   m_GameObject: {fileID: 7269284481876493469}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: c577f735c7eca2747933c6b9579d9c24, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: c577f735c7eca2747933c6b9579d9c24, type: 2}
   m_WrapMode: 0

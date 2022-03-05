@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1260376615
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 49
   m_Sprite: {fileID: 21300000, guid: d6cdb8e8cc0c0fa4a9debdf1fafc1ecb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -327,30 +327,32 @@ MonoBehaviour:
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.11299447
     - serializedVersion: 3
-      time: 0.68884987
-      value: 6.9406667
-      inSlope: 19.792011
-      outSlope: 19.792011
+      time: 0.75155896
+      value: 4.2685866
+      inSlope: 9.078341
+      outSlope: 9.078341
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.22577173
+      inWeight: 0.084514186
+      outWeight: 0.22567403
     - serializedVersion: 3
       time: 1
-      value: 20
-      inSlope: 75.038414
-      outSlope: 75.038414
+      value: 10
+      inSlope: 21.222988
+      outSlope: 21.222988
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.077979855
+      inWeight: 0.038128257
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   movingProbability: 0.7
+  towardsRegionPositionProbability: 0.2
   animator: {fileID: 585491891819277594}
+  minDelta: 1
 --- !u!114 &2355225213597162707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +365,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a21ca8859e142646b05d12ed60786c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  influenceSpeed: 1
+  influenceSpeed: 0.2
+  outlineColor1: {r: 0.32608482, g: 0.4716981, b: 0.26032394, a: 1}
+  outlineColor2: {r: 0.4528302, g: 0.16447133, b: 0.2165061, a: 1}
+  outlineColor3: {r: 0.29263082, g: 0.4528302, b: 0.38163048, a: 1}
+  outlineColor4: {r: 0.4811321, g: 0.24283554, b: 0.39359495, a: 1}
+  outline: {fileID: 4831485995971386418}
 --- !u!114 &5973034082152304233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3136058dc80b8c45bd3311d71410847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backpack: {fileID: 5901055645062830422}
+  hat: {fileID: 7610772442993730097}
+  eye: {fileID: 1018948692715085141}
 --- !u!210 &7446877166966164688
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -434,7 +444,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1
 --- !u!114 &767865942823158412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,6 +742,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6154195561101455301}
     m_Modifications:
+    - target: {fileID: 6266295725277252417, guid: 6c82dd2dac3278444a8efc7afad60842, type: 3}
+      propertyPath: m_SortingOrder
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7269284481876493469, guid: 6c82dd2dac3278444a8efc7afad60842, type: 3}
       propertyPath: m_Name
       value: Pupil
@@ -778,7 +792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465404221164672904, guid: 6c82dd2dac3278444a8efc7afad60842, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.73136514
+      value: 1.08269
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c82dd2dac3278444a8efc7afad60842, type: 3}
