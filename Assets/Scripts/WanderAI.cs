@@ -1,71 +1,113 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class WanderAI : MonoBehaviour
 {
     [SerializeField]
-    float speed;
+    AnimationCurve speedDistribution;
     [SerializeField]
-    float range;
+    AnimationCurve distanceDistribution;
     [SerializeField]
-    float maxDistance;
+    AnimationCurve waitingTimeDistribution;
+    [SerializeField]
+    float movingProbability;
 
-    float waitTime;
+    float minDelta = 0.1f;
+    Vector4 boardBounds;
+
+    float currentSpeed;
+
+    float nextActionTime;
 
     Vector2 wayPoint;
 
+    State currentState;
+
+
+
+    public void Init(Vector4 boardBounds)
+    {
+        this.boardBounds = boardBounds;
+    }
+
+
+
     private void Start()
     {
-        //StartCoroutine(Wandering());
-        SetNewDestination();
-        waitTime = 1f;
+        AssignAction();
     }
 
     private void Update()
     {
-        waitTime += Time.deltaTime;
-        Debug.Log("Wait Time = " + waitTime);
-
-        if (waitTime > 8)
+        switch (currentState)
         {
-            
-            waitTime = 0f;
-        }
-
-        else if (waitTime == 0)
-        {
-
-        }
-        else
-        {
-            Move();
-
-        }
-
-        if (Vector2.Distance(transform.position, wayPoint) <range)
-        {
-
-            SetNewDestination();
-            //StartCoroutine(Wandering()) ;
-            
+            case State.MOVING:
+                Move();
+                break;
+            case State.WAITING:
+                Wait();
+                break;
         }
     }
 
-    void SetNewDestination ()
+    private void AssignAction()
     {
-        
-        wayPoint = new Vector2(Random.Range(-maxDistance, maxDistance),Random.Range(-maxDistance, maxDistance));
-        
+        currentState = (State) (Random.value < movingProbability ? State.MOVING : State.WAITING);
+        switch (currentState)
+        {
+            case State.MOVING:
+                SetNewDestination();
+                break;
+            case State.WAITING:
+                StartWaiting();
+                break;
+        }
+    }
+
+    private void SetNewDestination()
+    {
+        float distance = distanceDistribution.Evaluate(Random.value);
+        do
+        {
+            float directionRadAngle = Mathf.Deg2Rad * Random.Range(0f, 360f);
+            wayPoint = transform.position + new Vector3(Mathf.Cos(directionRadAngle), Mathf.Sin(directionRadAngle)) * distance;
+        } while (wayPoint.x < boardBounds.w || wayPoint.x > boardBounds.y || wayPoint.y < boardBounds.z || wayPoint.y > boardBounds.x);
+        currentSpeed = speedDistribution.Evaluate(Random.value);
+        Debug.DrawLine(transform.position, new Vector3(wayPoint.x, wayPoint.y, transform.position.z), Color.red, 5f);
+    }
+
+    private void StartWaiting()
+    {
+        nextActionTime = Time.time + waitingTimeDistribution.Evaluate(Random.value);
+        // change anim
+        // sit if long time
     }
 
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, wayPoint, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, wayPoint, currentSpeed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, wayPoint) < minDelta)
+        {
+            AssignAction();
+        }
+    }
+
+    private void Wait()
+    {
+        if (Time.time >= nextActionTime)
+        {
+            AssignAction();
+        }
     }
 
 
+
+    public enum State
+    {
+        MOVING,
+        WAITING
+    }
 }
 
 

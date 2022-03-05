@@ -19,8 +19,9 @@ public class Dude : MonoBehaviour
 
 
 
-    public void Init(Culture baseCulture)
+    public void Init(Culture baseCulture, Vector4 boardBounds)
     {
         culturesManager.Init(baseCulture);
+        wanderAI.Init(boardBounds);
     }
 }
