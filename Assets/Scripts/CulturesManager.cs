@@ -6,6 +6,7 @@ public class CulturesManager : MonoBehaviour
 {
     public Culture BaseCulture => baseCulture;
 
+    [SerializeField] private float influenceSpeed;
     private Culture baseCulture;
     private float culturesPresence1;
     private float culturesPresence2;
@@ -39,33 +40,38 @@ public class CulturesManager : MonoBehaviour
         ModifyColors();
     }
 
-    public void IncreaseCulture(Culture culture, float amount)
+    public void IncreaseCulture(Culture culture)
     {
+        float amount = dude.StatsManager.Openness * Time.deltaTime * influenceSpeed;
         switch (culture)
         {
             case Culture.CULTURE1:
-                float factor = (1 - culturesPresence1 + amount) / (1 - culturesPresence1);
+                float factor = (1 - (culturesPresence1 + amount)) / (1 - culturesPresence1);
+                culturesPresence1 += amount;
                 culturesPresence2 *= factor;
                 culturesPresence3 *= factor;
                 culturesPresence4 *= factor;
                 break;
             case Culture.CULTURE2:
-                factor = (1 - culturesPresence2 + amount) / (1 - culturesPresence2);
+                factor = (1 - (culturesPresence2 + amount)) / (1 - culturesPresence2);
                 culturesPresence1 *= factor;
+                culturesPresence2 += amount;
                 culturesPresence3 *= factor;
                 culturesPresence4 *= factor;
                 break;
             case Culture.CULTURE3:
-                factor = (1 - culturesPresence3 + amount) / (1 - culturesPresence3);
+                factor = (1 - (culturesPresence3 + amount)) / (1 - culturesPresence3);
                 culturesPresence1 *= factor;
                 culturesPresence2 *= factor;
+                culturesPresence3 += amount;
                 culturesPresence4 *= factor;
                 break;
             case Culture.CULTURE4:
-                factor = (1 - culturesPresence4 + amount) / (1 - culturesPresence4);
+                factor = (1 - (culturesPresence4 + amount)) / (1 - culturesPresence4);
                 culturesPresence1 *= factor;
                 culturesPresence2 *= factor;
                 culturesPresence3 *= factor;
+                culturesPresence4 += amount;
                 break;
         }
         ModifyColors();
