@@ -20,6 +20,7 @@ public class WanderAI : MonoBehaviour
     State currentState;
     Dude dude;
     private float openness, mobility;
+    private bool explorator, protector;
 
 
     public void Init(Vector4 boardBounds, Dude dude)
@@ -42,6 +43,15 @@ public class WanderAI : MonoBehaviour
 
     private void Update()
     {
+        if (protector)
+        {
+            Wait();
+
+        }
+
+        else
+        {
+
         switch (currentState)
         {
             case State.MOVING:
@@ -51,6 +61,9 @@ public class WanderAI : MonoBehaviour
                 Wait();
                 break;
         }
+        }
+
+
     }
 
     private void AssignAction()
@@ -108,7 +121,10 @@ public class WanderAI : MonoBehaviour
         if (mobility <= 0.5f)
         {
             movingProbability = mobility;
+            explorator = false; 
         }
+
+        else { explorator = true; }
 
         
     }
@@ -117,7 +133,14 @@ public class WanderAI : MonoBehaviour
     {
         if (openness <= 0.5f) {
             movingProbability = openness;
+            protector = true; 
         }
+
+        else
+        {
+            protector = false;
+        } 
+
     }
 }
 
