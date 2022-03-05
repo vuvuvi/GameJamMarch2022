@@ -18,6 +18,8 @@ public class StatsManager : MonoBehaviour
         //changer en cons�quence si le joueur  lui assigne un accessoire.
     }
 
+    [SerializeField] private GameObject backpack;
+    [SerializeField] private GameObject hat;
     private float openness;
     private float mobility;
     private Dude dude;
@@ -29,6 +31,9 @@ public class StatsManager : MonoBehaviour
         this.dude = dude;
         openness = Random.value;
         mobility = Random.value;
+
+        backpack.SetActive(mobility > 0.6f);
+        hat.SetActive(mobility < 0.4f);
     }
 
 
