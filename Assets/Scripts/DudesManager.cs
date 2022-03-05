@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DudesManager : MonoBehaviour
 {
+    public Transform[] RegionsPositions => regionsPositions;
+
     [SerializeField] private int clansCount;
     [SerializeField] private int dudesCountByClan;
     [SerializeField] private Transform[] regionsPositions;
@@ -42,7 +44,7 @@ public class DudesManager : MonoBehaviour
                 board.bounds.min.y,
                 board.bounds.min.x
                 );
-                dude.Init((Culture) i, boardBounds);
+                dude.Init((Culture) i, boardBounds, this);
             }
         }
     }

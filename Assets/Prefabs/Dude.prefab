@@ -327,30 +327,32 @@ MonoBehaviour:
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.11299447
     - serializedVersion: 3
-      time: 0.68884987
-      value: 6.9406667
-      inSlope: 19.792011
-      outSlope: 19.792011
+      time: 0.75155896
+      value: 4.2685866
+      inSlope: 9.078341
+      outSlope: 9.078341
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.22577173
+      inWeight: 0.084514186
+      outWeight: 0.22567403
     - serializedVersion: 3
       time: 1
-      value: 20
-      inSlope: 75.038414
-      outSlope: 75.038414
+      value: 10
+      inSlope: 21.222988
+      outSlope: 21.222988
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.077979855
+      inWeight: 0.038128257
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   movingProbability: 0.7
+  towardsRegionPositionProbability: 0.2
   animator: {fileID: 585491891819277594}
+  minDelta: 1
 --- !u!114 &2355225213597162707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backpack: {fileID: 5901055645062830422}
   hat: {fileID: 7610772442993730097}
+  eye: {fileID: 1018948692715085141}
 --- !u!210 &7446877166966164688
 SortingGroup:
   m_ObjectHideFlags: 0

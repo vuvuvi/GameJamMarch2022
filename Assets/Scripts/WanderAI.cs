@@ -13,21 +13,25 @@ public class WanderAI : MonoBehaviour
     [SerializeField]
     float movingProbability;
     [SerializeField]
+    float towardsRegionPositionProbability;
+    [SerializeField]
     Animator animator;
-    float minDelta = 0.1f;
+    [SerializeField] float minDelta;
     Vector4 boardBounds;
     float currentSpeed;
     float nextActionTime;
     Vector2 wayPoint;
     State currentState;
     Dude dude;
+    DudesManager dudesManager;
 
 
 
-    public void Init(Vector4 boardBounds, Dude dude)
+    public void Init(Vector4 boardBounds, Dude dude, DudesManager dudesManager)
     {
         this.boardBounds = boardBounds;
         this.dude = dude;
+        this.dudesManager = dudesManager;
     }
 
 
@@ -67,12 +71,30 @@ public class WanderAI : MonoBehaviour
 
     private void SetNewDestination()
     {
-        float distance = distanceDistribution.Evaluate(Random.value) * dude.StatsManager.Mobility;
-        do
+        if (Random.value < towardsRegionPositionProbability)
         {
-            float directionRadAngle = Mathf.Deg2Rad * Random.Range(0f, 360f);
-            wayPoint = transform.position + new Vector3(Mathf.Cos(directionRadAngle), Mathf.Sin(directionRadAngle)) * distance;
-        } while (wayPoint.x < boardBounds.w || wayPoint.x > boardBounds.y || wayPoint.y < boardBounds.z || wayPoint.y > boardBounds.x);
+            float minDistance = Mathf.Infinity;
+            Transform closestRegion = null;
+            foreach (var region in dudesManager.RegionsPositions)
+            {
+                float distanceToRegion = Vector3.Distance(transform.position, region.position);
+                if (distanceToRegion < minDistance)
+                {
+                    minDistance = distanceToRegion;
+                    closestRegion = region;
+                }
+            }
+            wayPoint = closestRegion.position;
+        }
+        else
+        {
+            float distance = distanceDistribution.Evaluate(Random.value) * dude.StatsManager.Mobility;
+            do
+            {
+                float directionRadAngle = Mathf.Deg2Rad * Random.Range(0f, 360f);
+                wayPoint = transform.position + new Vector3(Mathf.Cos(directionRadAngle), Mathf.Sin(directionRadAngle)) * distance;
+            } while (wayPoint.x < boardBounds.w || wayPoint.x > boardBounds.y || wayPoint.y < boardBounds.z || wayPoint.y > boardBounds.x);
+        }
         currentSpeed = speedDistribution.Evaluate(Random.value);
         Debug.DrawLine(transform.position, new Vector3(wayPoint.x, wayPoint.y, transform.position.z), Color.red, 5f);
         transform.localScale = new Vector3(wayPoint.x > transform.position.x ? -1 : 1, 1, 1);

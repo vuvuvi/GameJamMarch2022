@@ -19,16 +19,15 @@ public class Dude : MonoBehaviour
         statsManager = GetComponent<StatsManager>();
         culturesManager = GetComponent<CulturesManager>();
         wanderAI = GetComponent<WanderAI>();
-
     }
 
 
 
-    public void Init(Culture baseCulture, Vector4 boardBounds)
+    public void Init(Culture baseCulture, Vector4 boardBounds, DudesManager dudesManager)
     {
         statsManager.Init(this);
         culturesManager.Init(baseCulture, this);
-        wanderAI.Init(boardBounds, this);
+        wanderAI.Init(boardBounds, this, dudesManager);
     }
 
 
