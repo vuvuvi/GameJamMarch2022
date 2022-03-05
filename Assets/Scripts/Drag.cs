@@ -8,6 +8,7 @@ public class Drag : MonoBehaviour
     [SerializeField]
     private Canvas canvas;
     public GameObject pickupPrefab;
+    
 
 
     public void DragHandler(BaseEventData data)

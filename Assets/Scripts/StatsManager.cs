@@ -38,7 +38,22 @@ public class StatsManager : MonoBehaviour
         eye.color = new Color(eye.color.r * openness, eye.color.g * openness, eye.color.b * openness, eye.color.a);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Backpack"))
+        {
+           
+            backpack.SetActive(true);
+            mobility += 0.3f;
+        }
 
+        if (other.CompareTag("Hat"))
+        {
+            hat.SetActive(true);
+            mobility -= 0.2f;
+            
+        }
+    }
 
 
     //private void OnTriggerEnter2D(Collider2D other)

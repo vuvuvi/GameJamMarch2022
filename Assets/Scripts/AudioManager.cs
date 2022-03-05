@@ -7,7 +7,9 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip[] audioClips;
     private AudioSource audioSource;
+    public AudioSource sounds;
     private float track;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,10 @@ public class AudioManager : MonoBehaviour
          
     }
 
+    public void HoverSound(AudioClip hoversounds)
+    {
+        sounds.PlayOneShot(hoversounds);
+    }
     private AudioClip GetRandomClip()
     {
         return audioClips[Random.Range(0, audioClips.Length)];
