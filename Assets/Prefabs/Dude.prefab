@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5487880956426731551}
   - component: {fileID: 2355225213597162707}
   - component: {fileID: 5973034082152304233}
+  - component: {fileID: 7446877166966164688}
   m_Layer: 6
   m_Name: Dude
   m_TagString: Untagged
@@ -273,17 +274,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 9
-      outSlope: 9
+      inSlope: 2
+      outSlope: 2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 10
-      inSlope: 9
-      outSlope: 9
+      value: 3
+      inSlope: 2
+      outSlope: 2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -375,6 +376,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3136058dc80b8c45bd3311d71410847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &7446877166966164688
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056145264010714642}
+  m_Enabled: 1
+  m_SortingLayerID: -1260376615
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!1 &3147347836533936253
 GameObject:
   m_ObjectHideFlags: 0
