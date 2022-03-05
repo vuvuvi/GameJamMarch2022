@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class StatsManager : MonoBehaviour
 {
+    private float openness;
+    private float mobility;
+
+    private Dude dude;
+
    
+
     public float Openness
     {
         get => openness;
@@ -19,12 +25,40 @@ public class StatsManager : MonoBehaviour
         //changer en conséquence si le joueur  lui assigne un accessoire. 
     }
 
-    private void OnTriggerEnter2D(Collider2D c)
+
+    public void Init(Dude dude)
     {
-        //if hat, activate hat, augmenter la mobilité de 0.25f
-        //if back
+        this.dude = dude;
     }
 
-    private float openness = Random.Range(0f,1f);
-    private float mobility = Random.Range(0f,1f);
+   
+
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("Hat"))
+    //    {
+    //        //Activer le layer hat 
+    //        Debug.Log("Chapeau");
+    //    }
+
+    //    if (other.CompareTag("Backpack"))
+    //    {
+    //        //Activer le layer backpack 
+    //        Debug.Log("Sac à dos");
+    //    }
+    //    if (other.CompareTag("Sword"))
+    //    {
+    //        //Activer le layer sword 
+    //        Debug.Log("Epée");
+    //    }
+    //    if (other.CompareTag("Rateau"))
+    //    {
+    //        //Activer le layer fourche 
+    //        Debug.Log("Rateau");
+    //    }
+
+    //}
+
+
+
 }

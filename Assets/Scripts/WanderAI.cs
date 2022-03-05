@@ -19,7 +19,7 @@ public class WanderAI : MonoBehaviour
     Vector2 wayPoint;
     State currentState;
     Dude dude;
-
+    private float openness, mobility;
 
 
     public void Init(Vector4 boardBounds, Dude dude)
@@ -32,7 +32,12 @@ public class WanderAI : MonoBehaviour
 
     private void Start()
     {
+        openness = Random.Range(0f, 1f);
+        mobility = Random.Range(0f, 1f);
+        SetMobility();
+        SetOpenness();
         AssignAction();
+
     }
 
     private void Update()
@@ -95,6 +100,23 @@ public class WanderAI : MonoBehaviour
         if (Time.time >= nextActionTime)
         {
             AssignAction();
+        }
+    }
+
+    public void SetMobility()
+    {
+        if (mobility <= 0.5f)
+        {
+            movingProbability = mobility;
+        }
+
+        
+    }
+
+    public void SetOpenness()
+    {
+        if (openness <= 0.5f) {
+            movingProbability = openness;
         }
     }
 }
