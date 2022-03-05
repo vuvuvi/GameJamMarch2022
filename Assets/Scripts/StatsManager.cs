@@ -24,7 +24,7 @@ public class StatsManager : MonoBehaviour
     private float openness;
     private float mobility;
     private Dude dude;
-
+    public AudioSource pickupsound;
 
 
     public void Init(Dude dude)
@@ -42,6 +42,7 @@ public class StatsManager : MonoBehaviour
     {
         if (other.CompareTag("Backpack"))
         {
+            pickupsound.Play(); 
            
             backpack.SetActive(true);
             mobility += 0.3f;
@@ -49,6 +50,8 @@ public class StatsManager : MonoBehaviour
 
         if (other.CompareTag("Hat"))
         {
+            pickupsound.Play();
+            
             hat.SetActive(true);
             mobility -= 0.2f;
             

@@ -387,6 +387,7 @@ MonoBehaviour:
   backpack: {fileID: 5901055645062830422}
   hat: {fileID: 7610772442993730097}
   eye: {fileID: 1018948692715085141}
+  pickupsound: {fileID: 2485103632335074131, guid: 6f710e02d4673a04aafca4d3361bfb1d, type: 3}
 --- !u!210 &7446877166966164688
 SortingGroup:
   m_ObjectHideFlags: 0
