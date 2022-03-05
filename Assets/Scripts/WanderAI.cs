@@ -23,9 +23,11 @@ public class WanderAI : MonoBehaviour
 
     float currentSpeed;
 
-    float waitTime;
+    float nextActionTime;
 
     Vector2 wayPoint;
+
+    State currentState;
 
 
 
@@ -36,35 +38,35 @@ public class WanderAI : MonoBehaviour
 
 
 
-    private void Start()
+    private void Awake()
     {
-        SetNewDestination();
-        waitTime = 1f;
+        AssignAction();
     }
 
     private void Update()
     {
-        waitTime += Time.deltaTime;
-        // Debug.Log("Wait Time = " + waitTime);
-
-        if (waitTime > 8)
+        switch (currentState)
         {
-
-            waitTime = 0f;
+            case State.MOVING:
+                Move();
+                break;
+            case State.WAITING:
+                Wait();
+                break;
         }
+    }
 
-        else if (waitTime == 0)
+    private void AssignAction()
+    {
+        currentState = (State) Random.Range(0, 2);
+        switch (currentState)
         {
-
-        }
-        else
-        {
-            Move();
-        }
-
-        if (Vector2.Distance(transform.position, wayPoint) < minDelta)
-        {
-            SetNewDestination();
+            case State.MOVING:
+                SetNewDestination();
+                break;
+            case State.WAITING:
+                StartWaiting();
+                break;
         }
     }
 
@@ -77,15 +79,28 @@ public class WanderAI : MonoBehaviour
         Debug.DrawLine(transform.position, new Vector3(wayPoint.x, wayPoint.y, transform.position.z), Color.red, 5f);
     }
 
+    private void StartWaiting()
+    {
+        nextActionTime = Random.Range(minWaitingTime, maxWaitingTime);
+        // change anim
+        // sit if long time
+    }
+
     private void Move()
     {
         transform.position = Vector2.MoveTowards(transform.position, wayPoint, currentSpeed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, wayPoint) < minDelta)
+        {
+            SetNewDestination();
+        }
     }
 
     private void Wait()
     {
-        // change anim
-        // sit if long time
+        if (Time.time >= nextActionTime)
+        {
+            AssignAction();
+        }
     }
 
 
