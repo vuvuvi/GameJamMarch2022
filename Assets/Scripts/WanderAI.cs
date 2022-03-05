@@ -75,6 +75,7 @@ public class WanderAI : MonoBehaviour
         } while (wayPoint.x < boardBounds.w || wayPoint.x > boardBounds.y || wayPoint.y < boardBounds.z || wayPoint.y > boardBounds.x);
         currentSpeed = speedDistribution.Evaluate(Random.value);
         Debug.DrawLine(transform.position, new Vector3(wayPoint.x, wayPoint.y, transform.position.z), Color.red, 5f);
+        transform.localScale = new Vector3(wayPoint.x > transform.position.x ? -1 : 1, 1, 1);
         animator.SetBool("IsWalking", true);
     }
 
