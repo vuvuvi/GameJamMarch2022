@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 314092291}
   - component: {fileID: 314092293}
   m_Layer: 5
-  m_Name: hat
+  m_Name: backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
