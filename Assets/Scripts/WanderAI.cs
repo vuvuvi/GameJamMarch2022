@@ -12,6 +12,8 @@ public class WanderAI : MonoBehaviour
     AnimationCurve waitingTimeDistribution;
     [SerializeField]
     float movingProbability;
+    [SerializeField]
+    Animator animator;
     float minDelta = 0.1f;
     Vector4 boardBounds;
     float currentSpeed;
@@ -19,9 +21,6 @@ public class WanderAI : MonoBehaviour
     Vector2 wayPoint;
     State currentState;
     Dude dude;
-    float distance;
-    bool isMoving;
-    public Animator animator;
 
 
 
@@ -68,7 +67,7 @@ public class WanderAI : MonoBehaviour
 
     private void SetNewDestination()
     {
-        distance = distanceDistribution.Evaluate(Random.value) * dude.StatsManager.Mobility;
+        float distance = distanceDistribution.Evaluate(Random.value) * dude.StatsManager.Mobility;
         do
         {
             float directionRadAngle = Mathf.Deg2Rad * Random.Range(0f, 360f);
@@ -76,18 +75,18 @@ public class WanderAI : MonoBehaviour
         } while (wayPoint.x < boardBounds.w || wayPoint.x > boardBounds.y || wayPoint.y < boardBounds.z || wayPoint.y > boardBounds.x);
         currentSpeed = speedDistribution.Evaluate(Random.value);
         Debug.DrawLine(transform.position, new Vector3(wayPoint.x, wayPoint.y, transform.position.z), Color.red, 5f);
+        animator.SetBool("IsWalking", true);
     }
 
     private void StartWaiting()
     {
         nextActionTime = Time.time + waitingTimeDistribution.Evaluate(Random.value);
-        // change anim
+        animator.SetBool("IsWalking", false);
         // sit if long time
     }
 
     private void Move()
     {
-        isMoving = true;    
         transform.position = Vector2.MoveTowards(transform.position, wayPoint, currentSpeed * Time.deltaTime);
         if (Vector2.Distance(transform.position, wayPoint) < minDelta)
         {
@@ -97,23 +96,9 @@ public class WanderAI : MonoBehaviour
 
     private void Wait()
     {
-        isMoving = false;
         if (Time.time >= nextActionTime)
         {
             AssignAction();
-        }
-    }
-
-    void Animation()
-    {
-        if (isMoving)
-        {
-            animator.SetBool("isWalking", true);
-        }
-
-        else if (!isMoving)
-        {
-            animator.SetBool("isWalking", false);
         }
     }
 }

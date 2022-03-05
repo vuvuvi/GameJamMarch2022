@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6573115639061473292}
   - component: {fileID: 4471096995045530000}
   m_Layer: 0
-  m_Name: BackPack
+  m_Name: Backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 581318352016042616}
   - component: {fileID: 4977574908187666968}
   m_Layer: 0
-  m_Name: PickUp_BackPack
+  m_Name: PickUp_Backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

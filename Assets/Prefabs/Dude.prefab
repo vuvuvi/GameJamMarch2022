@@ -348,7 +348,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  movingProbability: 1
+  movingProbability: 0.7
   animator: {fileID: 585491891819277594}
 --- !u!114 &2355225213597162707
 MonoBehaviour:
@@ -722,7 +722,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269284481876493469, guid: 6c82dd2dac3278444a8efc7afad60842, type: 3}
       propertyPath: m_Name
-      value: pupil
+      value: Pupil
       objectReference: {fileID: 0}
     - target: {fileID: 7465404221164672904, guid: 6c82dd2dac3278444a8efc7afad60842, type: 3}
       propertyPath: m_RootOrder
@@ -766,7 +766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465404221164672904, guid: 6c82dd2dac3278444a8efc7afad60842, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.73136514
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c82dd2dac3278444a8efc7afad60842, type: 3}
