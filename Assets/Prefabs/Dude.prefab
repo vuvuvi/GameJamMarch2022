@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 5973034082152304233}
   m_Layer: 6
   m_Name: Dude
-  m_TagString: Untagged
+  m_TagString: Bonome
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

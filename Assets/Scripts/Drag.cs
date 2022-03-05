@@ -7,6 +7,8 @@ public class Drag : MonoBehaviour
 {
     [SerializeField]
     private Canvas canvas;
+    
+
 
     public void DragHandler(BaseEventData data)
     {
@@ -16,4 +18,16 @@ public class Drag : MonoBehaviour
 
         transform.position = canvas.transform.TransformPoint(position);
     }
+
+    
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bonome"))
+        {
+            this.gameObject.SetActive(false);
+          
+        }
+    }
+
 }
