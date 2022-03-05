@@ -367,10 +367,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   influenceSpeed: 0.2
-  outlineColor1: {r: 0.32608482, g: 0.4716981, b: 0.26032394, a: 1}
-  outlineColor2: {r: 0.4528302, g: 0.16447133, b: 0.2165061, a: 1}
-  outlineColor3: {r: 0.29263082, g: 0.4528302, b: 0.38163048, a: 1}
-  outlineColor4: {r: 0.4811321, g: 0.24283554, b: 0.39359495, a: 1}
+  outlineColor1: {r: 0.050980397, g: 0.32941177, b: 0.16280876, a: 1}
+  outlineColor2: {r: 0.08170166, g: 0.2846387, b: 0.33962262, a: 1}
+  outlineColor3: {r: 0.4245283, g: 0.078097194, b: 0.2096084, a: 1}
+  outlineColor4: {r: 0.7075472, g: 0.108418204, b: 0.06341223, a: 1}
   outline: {fileID: 4831485995971386418}
 --- !u!114 &5973034082152304233
 MonoBehaviour:
