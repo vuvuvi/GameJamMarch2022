@@ -11,7 +11,7 @@ public class DudesManager : MonoBehaviour
     [SerializeField] private Transform[] regionsPositions;
     [SerializeField] private float initialSpreadRadius;
     [SerializeField] private Dude dudePrefab;
-    [SerializeField] private SpriteRenderer board;
+    [SerializeField] private Collider2D board;
 
 
 
@@ -38,13 +38,13 @@ public class DudesManager : MonoBehaviour
             {
                 Vector3 position = new Vector3(regionPosition.position.x + Random.Range(-initialSpreadRadius,initialSpreadRadius), regionPosition.position.y + Random.Range(-initialSpreadRadius,initialSpreadRadius), 0);
                 Dude dude = Instantiate(dudePrefab, position, Quaternion.identity);
-                Vector4 boardBounds = new Vector4(
-                board.bounds.max.y,
-                board.bounds.max.x,
-                board.bounds.min.y,
-                board.bounds.min.x
-                );
-                dude.Init((Culture) i, boardBounds, this);
+                // Vector4 boardBounds = new Vector4(
+                // board.bounds.max.y,
+                // board.bounds.max.x,
+                // board.bounds.min.y,
+                // board.bounds.min.x
+                // );
+                dude.Init((Culture) i, board, this);
             }
         }
     }

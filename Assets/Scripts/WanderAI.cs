@@ -17,7 +17,7 @@ public class WanderAI : MonoBehaviour
     [SerializeField]
     Animator animator;
     [SerializeField] float minDelta;
-    Vector4 boardBounds;
+    Collider2D board;
     float currentSpeed;
     float nextActionTime;
     Vector2 wayPoint;
@@ -27,9 +27,9 @@ public class WanderAI : MonoBehaviour
 
 
 
-    public void Init(Vector4 boardBounds, Dude dude, DudesManager dudesManager)
+    public void Init(Collider2D board, Dude dude, DudesManager dudesManager)
     {
-        this.boardBounds = boardBounds;
+        this.board = board;
         this.dude = dude;
         this.dudesManager = dudesManager;
     }
@@ -89,11 +89,12 @@ public class WanderAI : MonoBehaviour
         else
         {
             float distance = distanceDistribution.Evaluate(Random.value) * dude.StatsManager.Mobility;
-            do
-            {
-                float directionRadAngle = Mathf.Deg2Rad * Random.Range(0f, 360f);
-                wayPoint = transform.position + new Vector3(Mathf.Cos(directionRadAngle), Mathf.Sin(directionRadAngle)) * distance;
-            } while (wayPoint.x < boardBounds.w || wayPoint.x > boardBounds.y || wayPoint.y < boardBounds.z || wayPoint.y > boardBounds.x);
+            // do
+            // {
+            //     float directionRadAngle = Mathf.Deg2Rad * Random.Range(0f, 360f);
+            //     wayPoint = transform.position + new Vector3(Mathf.Cos(directionRadAngle), Mathf.Sin(directionRadAngle)) * distance;
+            // } while (wayPoint.x < boardBounds.w || wayPoint.x > boardBounds.y || wayPoint.y < boardBounds.z || wayPoint.y > boardBounds.x);
+            // } while (!board.OverlapPoint(wayPoint));
         }
         currentSpeed = speedDistribution.Evaluate(Random.value);
         Debug.DrawLine(transform.position, new Vector3(wayPoint.x, wayPoint.y, transform.position.z), Color.red, 5f);

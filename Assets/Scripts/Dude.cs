@@ -23,11 +23,11 @@ public class Dude : MonoBehaviour
 
 
 
-    public void Init(Culture baseCulture, Vector4 boardBounds, DudesManager dudesManager)
+    public void Init(Culture baseCulture, Collider2D board, DudesManager dudesManager)
     {
         statsManager.Init(this);
         culturesManager.Init(baseCulture, this);
-        wanderAI.Init(boardBounds, this, dudesManager);
+        wanderAI.Init(board, this, dudesManager);
     }
 
 

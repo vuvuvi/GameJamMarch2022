@@ -18,6 +18,7 @@ public class CulturesManager : MonoBehaviour
     private float culturesPresence4;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteRenderer outline;
+    [SerializeField] private SpriteRenderer shadow;
     private Dude dude;
 
 
@@ -31,18 +32,22 @@ public class CulturesManager : MonoBehaviour
             case Culture.CULTURE1:
                 culturesPresence1 = 1f;
                 outline.color = outlineColor1;
+                shadow.color = outlineColor1;
                 break;
             case Culture.CULTURE2:
                 culturesPresence2 = 1f;
                 outline.color = outlineColor2;
+                shadow.color = outlineColor2;
                 break;
             case Culture.CULTURE3:
                 culturesPresence3 = 1f;
                 outline.color = outlineColor3;
+                shadow.color = outlineColor3;
                 break;
             case Culture.CULTURE4:
                 culturesPresence4 = 1f;
                 outline.color = outlineColor4;
+                shadow.color = outlineColor4;
                 break;
 
         }
