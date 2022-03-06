@@ -4,28 +4,44 @@ using UnityEngine;
 
 public class ItemSpawn : MonoBehaviour
 {
-    float time;
-    public GameObject hat1, backpack1, hat2, backpack2;
+    public float spawnfrequency;
+    public GameObject item;
+    public Transform itemspawn;
+    public Transform canvas;
+    public int count = 0;
+    float nextspawntime;
+    bool isAvailable;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
+   
     // Update is called once per frame
     void Update()
     {
-        time = Time.time;
-        Debug.Log(time);
-
-        if (time >= 45)
+        
+      if (isAvailable)
         {
-            hat1.SetActive(true);
-            backpack1.SetActive(true);
+            return;
         }
 
-        if (time >= 90) { 
-            hat2.SetActive(true);
-            backpack2.SetActive(true);}
+        if (Time.time >= nextspawntime && count <3)
+        {
+            GameObject itemdrop = Instantiate(item, canvas);
+            isAvailable = true;
+            
+            itemdrop.transform.position = itemspawn.position;
+           
+            count++;
+            
+        }
+
+       
+
+   
     }
-}
+
+    public void SetNextSpawnTime()
+    {
+        nextspawntime = Time.time+  spawnfrequency;
+        isAvailable = false;    
+    }
+    }

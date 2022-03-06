@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 70}
+  m_AnchoredPosition: {x: -20.68, y: 1.34}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5280406309624140802
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 192673845964091079, guid: b9194237aeec8ba4c83fcf3c3954d828, type: 3}
   pickupPrefab: {fileID: 4322872689666988832, guid: 37299ac5f48c32549a01b35f82ec4b03, type: 3}
+  spawn: {fileID: 0}
 --- !u!61 &5280406309624140805
 BoxCollider2D:
   m_ObjectHideFlags: 0

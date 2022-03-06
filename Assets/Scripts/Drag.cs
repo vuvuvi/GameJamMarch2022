@@ -8,7 +8,9 @@ public class Drag : MonoBehaviour
     [SerializeField]
     private Canvas canvas;
     public GameObject pickupPrefab;
-    
+    public Transform spawn;
+
+
 
 
     public void DragHandler(BaseEventData data)
@@ -21,11 +23,5 @@ public class Drag : MonoBehaviour
     }
 
 
-    public void Spawn()
-    {
-
-        GameObject pickup = Instantiate(pickupPrefab);
-        pickup.transform.position = this.transform.position;
-    }
 
 }
