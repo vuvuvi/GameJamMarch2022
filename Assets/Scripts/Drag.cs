@@ -13,6 +13,9 @@ public class Drag : MonoBehaviour
 
 
 
+
+
+
     public void DragHandler(BaseEventData data)
     {
         PointerEventData pointerData = (PointerEventData)data;
@@ -24,4 +27,11 @@ public class Drag : MonoBehaviour
 
 
 
+
+    public void Spawn()
+    {
+
+        GameObject pickup = Instantiate(pickupPrefab);
+        pickup.transform.position = this.transform.position;
+    }
 }
